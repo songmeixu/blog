@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Post on Arthur Dent</title>
-    <link>https://you.github.io/post/</link>
+    <link>https://songmeixu.github.io/blog/post/</link>
     <description>Recent content in Post on Arthur Dent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 14 Feb 2016 16:11:58 +0530</lastBuildDate>
-    <atom:link href="https://you.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://songmeixu.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Good to Great Book Review</title>
-      <link>https://you.github.io/post/good-to-great/</link>
+      <link>https://songmeixu.github.io/blog/post/good-to-great/</link>
       <pubDate>Sun, 14 Feb 2016 16:11:58 +0530</pubDate>
       
-      <guid>https://you.github.io/post/good-to-great/</guid>
+      <guid>https://songmeixu.github.io/blog/post/good-to-great/</guid>
       <description>&lt;p&gt;I read &lt;strong&gt;Good to Great in January 2016&lt;/strong&gt;. An awesome read sharing detailed analysis on how good companies became great. Although this book is about how companies became great but we could apply a lot of the learnings on ourselves. Concepts like level 5 leader, hedgehog concept, the stockdale paradox are equally applicable to individuals.&lt;/p&gt;
 </description>
     </item>
