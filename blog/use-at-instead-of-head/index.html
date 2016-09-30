@@ -2,7 +2,6 @@
 <html lang="en-US">
 
 <head>
-	<meta name="generator" content="Hugo 0.16" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <meta name="HandheldFriendly" content="True">
@@ -14,10 +13,10 @@
 <title>
 
 
-     Arthur Dent 
+     Use @ instead of HEAD 
 
 </title>
-<link rel="canonical" href="https://you.github.io/">
+<link rel="canonical" href="https://you.github.io/blog/use-at-instead-of-head/">
 
 
 <script type="text/javascript">
@@ -111,56 +110,73 @@
     </div>
 </section>
 
-<section class="main">
+
+<section class="main post non-narrow zero-top-spacing">
     <div class="container">
         <div class="content">
-            <div class="page-heading">Blog</div>
-            <ul>
-            
-                
-            
-                
-            
-                
-                    <li class="post-item">
-    <div class="meta">Dec 21, 2015</div>
-    <a href="https://you.github.io/blog/les-mis%C3%A9rables-by-victor-hugo/"><div>Les Misérables by Victor Hugo</div></a>
-</li>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
-                
-            
-                
-                    <li class="post-item">
-    <div class="meta">Dec 21, 2015</div>
-    <a href="https://you.github.io/blog/metamorphosis-by-franz-kafka/"><div>Metamorphosis by Franz Kafka</div></a>
-</li>
+    Use @ instead of HEAD
 
-                
-            
-                
-                    <li class="post-item">
-    <div class="meta">Aug 25, 2015</div>
-    <a href="https://you.github.io/blog/use-at-instead-of-head/"><div>Use @ instead of HEAD</div></a>
-</li>
+</div>
 
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-                
-            
-            </ul>
+                    <div class="initials"><a href="https://you.github.io/">ad</a></div>
+                </div>
+                <div class="meta">
+                    <div class="date" title="Tue Aug 25 2015 17:09:14 -0500">Aug 25, 2015</div>
+                    <div class="reading-time"><div class="middot"></div>1 minute read</div>
+                </div>
+            </div>
+            <div class="markdown">
+                <p>I recently discovered that from git version <a href="https://github.com/git/git/blob/master/Documentation/RelNotes/1.8.5.txt#L100">1.8.5</a> onwards, <code>@</code> can replace <code>HEAD</code>:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ git reset --hard @~2
+$ git rebase -i @~10
+$ git diff @~2..@~3
+</code></pre></div>
+
+
+<p>And also in most scenarios <code>HEAD</code> can be left out completely, so you can say:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ git reset -- @<span class="o">{</span>2<span class="o">}</span>
+</code></pre></div>
+
+
+<p>instead of:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ git reset -- HEAD@<span class="o">{</span>2<span class="o">}</span>
+</code></pre></div>
+
+
+<p>It takes some getting used to, but it&rsquo;s definitely faster than typing <code>HEAD</code>.</p>
+
+                <br>
+                <p><a href="https://you.github.io/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'cocoaexamplesite';
+    var disqus_identifier = 'https:\/\/you.github.io\/blog\/use-at-instead-of-head\/';
+    var disqus_title = 'Use @ instead of HEAD';
+    var disqus_url = 'https:\/\/you.github.io\/blog\/use-at-instead-of-head\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
         </div>
     </div>
 </section>
+
 
 
 <script type="text/javascript">
@@ -186,5 +202,4 @@ try {
 
 </body>
 </html>
-
 
