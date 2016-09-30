@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Arthur Dent</title>
+    <title>meixu song</title>
     <link>https://songmeixu.github.io/blog/</link>
-    <description>Recent content on Arthur Dent</description>
+    <description>Recent content on meixu song</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 30 Sep 2016 18:20:40 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Sep 2016 18:36:29 +0800</lastBuildDate>
     <atom:link href="https://songmeixu.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>your new post</title>
+      <link>https://songmeixu.github.io/blog/blog/your-new-post/</link>
+      <pubDate>Fri, 30 Sep 2016 18:36:29 +0800</pubDate>
+      
+      <guid>https://songmeixu.github.io/blog/blog/your-new-post/</guid>
+      <description>&lt;p&gt;test&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1&lt;/li&gt;
+&lt;li&gt;2&lt;/li&gt;
+&lt;li&gt;3&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>hello world</title>
-      <link>https://songmeixu.github.io/blog/hello-world/</link>
+      <link>https://songmeixu.github.io/blog/blog/hello-world/</link>
       <pubDate>Fri, 30 Sep 2016 18:20:40 +0800</pubDate>
       
-      <guid>https://songmeixu.github.io/blog/hello-world/</guid>
+      <guid>https://songmeixu.github.io/blog/blog/hello-world/</guid>
       <description>&lt;p&gt;test&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;

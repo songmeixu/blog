@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on Arthur Dent</title>
+    <title>Blog on meixu song</title>
     <link>https://songmeixu.github.io/blog/blog/</link>
-    <description>Recent content in Blog on Arthur Dent</description>
+    <description>Recent content in Blog on meixu song</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 21 Dec 2015 04:05:25 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 30 Sep 2016 18:36:29 +0800</lastBuildDate>
     <atom:link href="https://songmeixu.github.io/blog/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>your new post</title>
+      <link>https://songmeixu.github.io/blog/blog/your-new-post/</link>
+      <pubDate>Fri, 30 Sep 2016 18:36:29 +0800</pubDate>
+      
+      <guid>https://songmeixu.github.io/blog/blog/your-new-post/</guid>
+      <description>&lt;p&gt;test&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1&lt;/li&gt;
+&lt;li&gt;2&lt;/li&gt;
+&lt;li&gt;3&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>hello world</title>
+      <link>https://songmeixu.github.io/blog/blog/hello-world/</link>
+      <pubDate>Fri, 30 Sep 2016 18:20:40 +0800</pubDate>
+      
+      <guid>https://songmeixu.github.io/blog/blog/hello-world/</guid>
+      <description>&lt;p&gt;test&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+
+int main(int argc, char const *argv[]) {
+  printf(&amp;quot;Hello world!\n&amp;quot;);
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Les Misérables by Victor Hugo</title>
