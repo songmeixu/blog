@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on meixu song</title>
+    <title>Blog on Meixu Song</title>
     <link>https://songmeixu.github.io/blog/blog/</link>
-    <description>Recent content in Blog on meixu song</description>
+    <description>Recent content in Blog on Meixu Song</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 29 May 2018 18:12:08 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Sep 2016 18:36:29 +0800</lastBuildDate>
     
 	<atom:link href="https://songmeixu.github.io/blog/blog/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Kaldi并行训练配置方式</title>
-      <link>https://songmeixu.github.io/blog/blog/kaldi%E5%B9%B6%E8%A1%8C%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</link>
-      <pubDate>Tue, 29 May 2018 18:12:08 +0800</pubDate>
-      
-      <guid>https://songmeixu.github.io/blog/blog/kaldi%E5%B9%B6%E8%A1%8C%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</guid>
-      <description>前言：在训练中，常需要根据任务是CPU还是GPU运算密集任务、IO读写任务，将任务分配到不同的服务机群，SGE提供了队列来应对这一需求。具体在kaldi环境中，切换队列有以下方法：
-方法1 &amp;ndash; 直接修改cmd.sh： queue=all.q # 在这里指定队列 export train_cmd=&amp;quot;queue.pl -q $queue --mem 2G&amp;quot; export decode_cmd=&amp;quot;queue.pl -q $queue --mem 4G&amp;quot; export mkgraph_cmd=&amp;quot;queue.pl -q $queue --mem 8G&amp;quot;  方法2 &amp;ndash; 修改conf/queue.conf： kaldi解析SGE并行任务的脚本为queue.pl，其默认会读取配置文件conf/queue.conf，所以可以通过配置文件提供的选项来切换队列。（还可以完成限制内存占用、指定进程数、指定机器处理等等配置，如--mem 2G就是通过默认配置文件完成到qsub中-l mem_free=2G,ram_free=2G的转换）
-以如下配置文件举例：
-command qsub -v PATH -cwd -S /bin/bash -j y -l arch=*64* option mem=* -l mem_free=$0,ram_free=$0 option mem=0 # Do not add anything to qsub_opts option num_threads=* -pe smp $0 option num_threads=1 # Do not add anything to qsub_opts option max_jobs_run=* -tc $0 default gpu=0 option gpu=0 -q all.</description>
-    </item>
     
     <item>
       <title>your new post</title>

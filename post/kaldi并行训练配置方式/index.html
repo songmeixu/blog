@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    Kaldi并行训练配置方式 | Meixu Song
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="https://songmeixu.github.io/blog/post/kaldi%E5%B9%B6%E8%A1%8C%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/"/>
+
+  
+  <link rel="stylesheet" href="https://songmeixu.github.io/blog/css/sanitize.css">
+  <link rel="stylesheet" href="https://songmeixu.github.io/blog/css/responsive.css">
+  <link rel="stylesheet" href="https://songmeixu.github.io/blog/css/highlight_monokai.css">
+  <link rel="stylesheet" href="https://songmeixu.github.io/blog/css/theme.css">
+  <link rel="stylesheet" href="https://songmeixu.github.io/blog/css/custom.css">
+  
+  
+  <link href="https://songmeixu.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="Meixu Song" />
+  <link href="https://songmeixu.github.io/blog/index.xml" rel="feed" type="application/rss+xml" title="Meixu Song" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="https://songmeixu.github.io/blog/">Meixu Song</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          <li><a href="//github.com/songmeixu" target="_blank">GitHub</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h1>Kaldi并行训练配置方式</h1>
+      <div class="meta">
+        May 29, 2018 &nbsp;
+        
+      </div>
+    </div>
+    <article>
+      
+
+<p><strong>前言：在训练中，常需要根据任务是CPU还是GPU运算密集任务、IO读写任务，将任务分配到不同的服务机群，SGE提供了队列来应对这一需求。具体在kaldi环境中，切换队列有以下方法</strong>：</p>
+
+<h4 id="方法1-直接修改cmd-sh">方法1 &ndash; 直接修改cmd.sh：</h4>
+
+<pre><code class="language-bash">queue=all.q # 在这里指定队列
+
+export train_cmd=&quot;queue.pl -q $queue --mem 2G&quot;
+export decode_cmd=&quot;queue.pl -q $queue --mem 4G&quot;
+export mkgraph_cmd=&quot;queue.pl -q $queue --mem 8G&quot;
+</code></pre>
+
+<h4 id="方法2-修改conf-queue-conf">方法2 &ndash; 修改conf/queue.conf：</h4>
+
+<p>kaldi解析SGE并行任务的脚本为queue.pl，其默认会读取配置文件conf/queue.conf，所以可以通过配置文件提供的选项来切换队列。（还可以完成限制内存占用、指定进程数、指定机器处理等等配置，如<code>--mem 2G</code>就是通过默认配置文件完成到qsub中<code>-l mem_free=2G,ram_free=2G</code>的转换）</p>
+
+<p>以如下配置文件举例：</p>
+
+<pre><code class="language-bash">command qsub -v PATH -cwd -S /bin/bash -j y -l arch=*64*
+option mem=* -l mem_free=$0,ram_free=$0
+option mem=0 # Do not add anything to qsub_opts
+option num_threads=* -pe smp $0
+option num_threads=1 # Do not add anything to qsub_opts
+option max_jobs_run=* -tc $0
+default gpu=0
+option gpu=0 -q all.q
+option gpu=* -l gpu=1 -q $0.q # --gpu=(QueuePrefixName:m40,p40)
+</code></pre>
+
+<p>此配置文件各关键词的意义可见于<a href="http://kaldi-asr.org/doc/queue.html">&ldquo;New-style options (unified interface)&rdquo;</a></p>
+
+<p>然后就可以在cmd.sh中通过如下方法切换队列：</p>
+
+<pre><code class="language-bash">gpu=0 # 使用all.q
+gpu=p40 # 使用p40.q
+
+export train_cmd=&quot;queue.pl --gpu $gpu --mem 2G&quot;
+export decode_cmd=&quot;queue.pl --gpu $gpu --mem 4G&quot;
+export mkgraph_cmd=&quot;queue.pl --gpu $gpu --mem 8G&quot;
+</code></pre>
+
+<p>方法2虽然多了一道配置，但是增加了配置能力（见下例），提供了统一的接口，方便不同机群调度管理工具（SGE、slurm等）的切换。</p>
+
+<p>例：
+在将任务提交到特定的机群时，常常伴随特定的配置，如gpu机群中，我不想让任务跑到某两台在执行本地任务的机器（abc,def），那么通过配置文件，可以将这种限制和p40队列绑定：</p>
+
+<pre><code class="language-bash">option gpu=p40 -l gpu=1 -q p40.q -l hostname='!*abc*&amp;!*def*'
+</code></pre>
+
+      
+      
+      
+    </article>
+    
+ <aside><div id="disqus_thread"></div></aside>
+
+<script type="text/javascript">
+     
+    var disqus_shortname = 'meixu-blog';
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="https://songmeixu.github.io/blog/blog/your-new-post/" rel="prev">your new post</a></span>
+    
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="https://songmeixu.github.io/blog/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
+
