@@ -6,7 +6,7 @@
   
   <meta charset="UTF-8">
   <title>
-    Kaldi并行训练配置方式 | Meixu Song
+    Kaldi并行训练配置方式 | 小道 · 人生
   </title>
 
 
@@ -24,8 +24,8 @@
   <link rel="stylesheet" href="https://songmeixu.github.io/blog/css/custom.css">
   
   
-  <link href="https://songmeixu.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="Meixu Song" />
-  <link href="https://songmeixu.github.io/blog/index.xml" rel="feed" type="application/rss+xml" title="Meixu Song" />
+  <link href="https://songmeixu.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="小道 · 人生" />
+  <link href="https://songmeixu.github.io/blog/index.xml" rel="feed" type="application/rss+xml" title="小道 · 人生" />
 
   
   
@@ -42,7 +42,7 @@
   <header role="banner">
     <div class="row gutters">
       <div id="site-title" class="col span_6">
-        <h1><a href="https://songmeixu.github.io/blog/">Meixu Song</a></h1>
+        <h1><a href="https://songmeixu.github.io/blog/">小道 · 人生</a></h1>
         
       </div>
       <div id="social" class="col span_6">
@@ -116,6 +116,11 @@ export mkgraph_cmd=&quot;queue.pl --gpu $gpu --mem 8G&quot;
 
 <pre><code class="language-bash">option gpu=p40 -l gpu=1 -q p40.q -l hostname='!*abc*&amp;!*def*'
 </code></pre>
+
+<p><strong>注意</strong>：
+方法二有个问题，就是配置的优先级，如果我在cmd.sh和queue.conf中都配置了，那么以哪个为准呢？</p>
+
+<p>通过查看queue.pl，发现在cmd.sh中通过qsub配置的原生参数，总会添加到最终的配置中，而在queue.conf中优先生效不需正则匹配的option、然后是正则替换后的option。当cmd.sh和queue.conf冲突时，如分别指定了&rsquo;-q all.q&rsquo;与&rsquo;-q p40.q&rsquo;，二者共存时、qsub优先使用先读取的cmd.sh中的参数。</p>
 
       
       

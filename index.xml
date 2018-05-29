@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Meixu Song</title>
+    <title>小道 · 人生</title>
     <link>https://songmeixu.github.io/blog/</link>
-    <description>Recent content on Meixu Song</description>
+    <description>Recent content on 小道 · 人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 29 May 2018 18:12:08 +0800</lastBuildDate>
@@ -41,15 +41,6 @@ command qsub -v PATH -cwd -S /bin/bash -j y -l arch=*64* option mem=* -l mem_fre
       <guid>https://songmeixu.github.io/blog/blog/hello-world/</guid>
       <description>test
 #include &amp;lt;stdio.h&amp;gt; int main(int argc, char const *argv[]) { printf(&amp;quot;Hello world!\n&amp;quot;); return 0; }  </description>
-    </item>
-    
-    <item>
-      <title>Good to Great Book Review</title>
-      <link>https://songmeixu.github.io/blog/post/good-to-great/</link>
-      <pubDate>Sun, 14 Feb 2016 16:11:58 +0530</pubDate>
-      
-      <guid>https://songmeixu.github.io/blog/post/good-to-great/</guid>
-      <description>I read Good to Great in January 2016. An awesome read sharing detailed analysis on how good companies became great. Although this book is about how companies became great but we could apply a lot of the learnings on ourselves. Concepts like level 5 leader, hedgehog concept, the stockdale paradox are equally applicable to individuals.</description>
     </item>
     
     <item>
