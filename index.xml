@@ -6,8 +6,22 @@
     <description>Recent content on meixu song</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 30 Sep 2016 18:36:29 +0800</lastBuildDate>
-    <atom:link href="https://songmeixu.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 May 2018 18:12:08 +0800</lastBuildDate>
+    
+	<atom:link href="https://songmeixu.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kaldi并行训练配置方式</title>
+      <link>https://songmeixu.github.io/blog/blog/kaldi%E5%B9%B6%E8%A1%8C%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Tue, 29 May 2018 18:12:08 +0800</pubDate>
+      
+      <guid>https://songmeixu.github.io/blog/blog/kaldi%E5%B9%B6%E8%A1%8C%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</guid>
+      <description>前言：在训练中，常需要根据任务是CPU还是GPU运算密集任务、IO读写任务，将任务分配到不同的服务机群，SGE提供了队列来应对这一需求。具体在kaldi环境中，切换队列有以下方法：
+方法1 &amp;ndash; 直接修改cmd.sh： queue=all.q # 在这里指定队列 export train_cmd=&amp;quot;queue.pl -q $queue --mem 2G&amp;quot; export decode_cmd=&amp;quot;queue.pl -q $queue --mem 4G&amp;quot; export mkgraph_cmd=&amp;quot;queue.pl -q $queue --mem 8G&amp;quot;  方法2 &amp;ndash; 修改conf/queue.conf： kaldi解析SGE并行任务的脚本为queue.pl，其默认会读取配置文件conf/queue.conf，所以可以通过配置文件提供的选项来切换队列。（还可以完成限制内存占用、指定进程数、指定机器处理等等配置，如--mem 2G就是通过默认配置文件完成到qsub中-l mem_free=2G,ram_free=2G的转换）
+以如下配置文件举例：
+command qsub -v PATH -cwd -S /bin/bash -j y -l arch=*64* option mem=* -l mem_free=$0,ram_free=$0 option mem=0 # Do not add anything to qsub_opts option num_threads=* -pe smp $0 option num_threads=1 # Do not add anything to qsub_opts option max_jobs_run=* -tc $0 default gpu=0 option gpu=0 -q all.</description>
+    </item>
     
     <item>
       <title>your new post</title>
@@ -15,14 +29,8 @@
       <pubDate>Fri, 30 Sep 2016 18:36:29 +0800</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/your-new-post/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1&lt;/li&gt;
-&lt;li&gt;2&lt;/li&gt;
-&lt;li&gt;3&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>test
+ 1 2 3  </description>
     </item>
     
     <item>
@@ -31,16 +39,8 @@
       <pubDate>Fri, 30 Sep 2016 18:20:40 +0800</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/hello-world/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
-
-int main(int argc, char const *argv[]) {
-  printf(&amp;quot;Hello world!\n&amp;quot;);
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>test
+#include &amp;lt;stdio.h&amp;gt; int main(int argc, char const *argv[]) { printf(&amp;quot;Hello world!\n&amp;quot;); return 0; }  </description>
     </item>
     
     <item>
@@ -49,8 +49,7 @@ int main(int argc, char const *argv[]) {
       <pubDate>Sun, 14 Feb 2016 16:11:58 +0530</pubDate>
       
       <guid>https://songmeixu.github.io/blog/post/good-to-great/</guid>
-      <description>&lt;p&gt;I read &lt;strong&gt;Good to Great in January 2016&lt;/strong&gt;. An awesome read sharing detailed analysis on how good companies became great. Although this book is about how companies became great but we could apply a lot of the learnings on ourselves. Concepts like level 5 leader, hedgehog concept, the stockdale paradox are equally applicable to individuals.&lt;/p&gt;
-</description>
+      <description>I read Good to Great in January 2016. An awesome read sharing detailed analysis on how good companies became great. Although this book is about how companies became great but we could apply a lot of the learnings on ourselves. Concepts like level 5 leader, hedgehog concept, the stockdale paradox are equally applicable to individuals.</description>
     </item>
     
     <item>
@@ -59,21 +58,8 @@ int main(int argc, char const *argv[]) {
       <pubDate>Mon, 21 Dec 2015 04:05:25 -0600</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/les-mis%C3%A9rables-by-victor-hugo/</guid>
-      <description>
-
-&lt;p&gt;Although this detail has no connection whatever with the real substance of what we are about to relate, it will not be superfluous, if merely for the sake of exactness in all points, to mention here the various rumors and remarks which had been in circulation about him from the very moment when he arrived in the diocese.&lt;/p&gt;
-
-&lt;h3 id=&#34;bool&#34;&gt;Bool&lt;/h3&gt;
-
-&lt;p&gt;True or false, that which is said of men often occupies as important a place in their lives, and above all in their destinies, as that which they do. M. Myriel was the son of a councillor of the &lt;a href=&#34;https://en.wikipedia.org/wiki/Parliament_of_Aix-en-Provence&#34;&gt;Parliament of Aix&lt;/a&gt;; hence he belonged to the nobility of the bar. It was said that his father, destining him to be the heir of his own post, had married him at a very early age, eighteen or twenty, in accordance with a custom which is rather widely prevalent in parliamentary families. In spite of this marriage, however, it was said that Charles Myriel created a great deal of talk. He was well formed, though rather short in stature, elegant, graceful, intelligent; the whole of the first portion of his life had been devoted to the world and
-to gallantry.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;The halls are nothing but rooms, and it is with difficulty that the air can be changed in them.&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;This conversation took place in the gallery dining-room on the ground-floor. The &lt;a href=&#34;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#34;&gt;Bishop&lt;/a&gt; remained silent for a moment; then he turned abruptly to the director of the hospital.&lt;/p&gt;
-</description>
+      <description>Although this detail has no connection whatever with the real substance of what we are about to relate, it will not be superfluous, if merely for the sake of exactness in all points, to mention here the various rumors and remarks which had been in circulation about him from the very moment when he arrived in the diocese.
+Bool True or false, that which is said of men often occupies as important a place in their lives, and above all in their destinies, as that which they do.</description>
     </item>
     
     <item>
@@ -82,29 +68,9 @@ to gallantry.&lt;/p&gt;
       <pubDate>Mon, 21 Dec 2015 04:03:46 -0600</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/metamorphosis-by-franz-kafka/</guid>
-      <description>
-
-&lt;h3 id=&#34;part-one&#34;&gt;Part One&lt;/h3&gt;
-
-&lt;p&gt;One morning, when &lt;em&gt;Gregor Samsa&lt;/em&gt; woke from troubled dreams, he &lt;a href=&#34;./&#34;&gt;found&lt;/a&gt; himself transformed in his bed into a horrible vermin.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.&lt;/p&gt;
-
-&lt;h3 id=&#34;part-two&#34;&gt;Part Two&lt;/h3&gt;
-
-&lt;p&gt;It was not until it was getting dark that evening that Gregor awoke from his deep and coma-like sleep. He would have woken soon afterwards anyway even if he hadn&amp;rsquo;t been disturbed, as he had had enough sleep and felt fully rested. But he had the impression that some hurried steps and the sound of the door leading into the front room being carefully shut had woken him.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;He pushed himself over to the door, feeling his way clumsily with his antennae - of which he was now beginning to learn the value - in order to see what had been happening there.&lt;/li&gt;
-&lt;li&gt;The whole of his left side seemed like one, painfully stretched scar, and he limped badly on his two rows of legs.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The light from the &lt;a href=&#34;https://en.wikipedia.org/wiki/Street_light&#34;&gt;electric street lamps&lt;/a&gt; shone palely here and there onto the ceiling and tops of the furniture, but down below, where Gregor was, it was dark.&lt;/p&gt;
-</description>
+      <description>Part One One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.
+ He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.
+ The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.</description>
     </item>
     
     <item>
@@ -113,28 +79,10 @@ to gallantry.&lt;/p&gt;
       <pubDate>Tue, 25 Aug 2015 17:09:14 -0500</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/use-at-instead-of-head/</guid>
-      <description>&lt;p&gt;I recently discovered that from git version &lt;a href=&#34;https://github.com/git/git/blob/master/Documentation/RelNotes/1.8.5.txt#L100&#34;&gt;1.8.5&lt;/a&gt; onwards, &lt;code&gt;@&lt;/code&gt; can replace &lt;code&gt;HEAD&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span&gt;&lt;/span&gt;$ git reset --hard @~2
-$ git rebase -i @~10
-$ git diff @~2..@~3
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;And also in most scenarios &lt;code&gt;HEAD&lt;/code&gt; can be left out completely, so you can say:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span&gt;&lt;/span&gt;$ git reset -- @&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;2&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;instead of:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span&gt;&lt;/span&gt;$ git reset -- HEAD@&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;2&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;It takes some getting used to, but it&amp;rsquo;s definitely faster than typing &lt;code&gt;HEAD&lt;/code&gt;.&lt;/p&gt;
-</description>
+      <description>I recently discovered that from git version 1.8.5 onwards, @ can replace HEAD:
+$ git reset --hard @~2 $ git rebase -i @~10 $ git diff @~2..@~3 And also in most scenarios HEAD can be left out completely, so you can say:
+$ git reset -- @{2} instead of:
+$ git reset -- HEAD@{2} It takes some getting used to, but it&amp;rsquo;s definitely faster than typing HEAD.</description>
     </item>
     
     <item>
@@ -143,20 +91,9 @@ $ git diff @~2..@~3
       <pubDate>Sat, 22 Aug 2015 06:42:21 -0700</pubDate>
       
       <guid>https://songmeixu.github.io/blog/about/</guid>
-      <description>&lt;p&gt;Along with &lt;a href=&#34;https://en.wikipedia.org/wiki/Ford_Prefect_(character)&#34;&gt;Ford Prefect&lt;/a&gt;, Dent barely escapes the Earth&amp;rsquo;s destruction as it is demolished to make way for a &lt;em&gt;hyperspace bypass&lt;/em&gt;. Arthur spends the next several years, still wearing his dressing gown, helplessly launched from crisis to crisis while trying to straighten out his lifestyle.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;He rather enjoys tea, but seems to have trouble obtaining it in the far reaches of the galaxy.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In time, he learns how to fly and carves a niche for himself as a sandwich-maker.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;//placehold.it/300x300&#34; class=&#34;profile&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;colophon/&#34;&gt;About this site&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Along with Ford Prefect, Dent barely escapes the Earth&amp;rsquo;s destruction as it is demolished to make way for a hyperspace bypass. Arthur spends the next several years, still wearing his dressing gown, helplessly launched from crisis to crisis while trying to straighten out his lifestyle.
+ He rather enjoys tea, but seems to have trouble obtaining it in the far reaches of the galaxy.
+ In time, he learns how to fly and carves a niche for himself as a sandwich-maker.</description>
     </item>
     
     <item>
@@ -165,14 +102,9 @@ $ git diff @~2..@~3
       <pubDate>Sat, 22 Aug 2015 06:28:26 -0700</pubDate>
       
       <guid>https://songmeixu.github.io/blog/colophon/</guid>
-      <description>&lt;p&gt;This website is a personal homepage.&lt;/p&gt;
-
-&lt;p&gt;The site is built with &lt;a target=&#34;_blank&#34; href=&#34;//gohugo.io&#34;&gt;Hugo&lt;/a&gt;—a static site generator made with Go. The website &lt;a href=&#34;https://songmeixu.github.io/blog/&#34;&gt;source code&lt;/a&gt; is available on GitHub. It uses the &lt;a target=&#34;_blank&#34; href=&#34;//github.com/nishanths/cocoa-hugo-theme&#34;&gt;cocoa&lt;/a&gt; theme. The posts are written in Markdown.&lt;/p&gt;
-
-&lt;p&gt;The primary font face is Open Sans and the monospace font face is Ubuntu Mono. The social icons are from the Ionicons font set. CSS classes for code syntax highlighting are inserted during compile-time by Hugo using Pygments.&lt;/p&gt;
-
-&lt;p&gt;If you find errors, &lt;a href=&#34;https://songmeixu.github.io/blog/&#34;&gt;please let me know&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>This website is a personal homepage.
+The site is built with Hugo—a static site generator made with Go. The website source code is available on GitHub. It uses the cocoa theme. The posts are written in Markdown.
+The primary font face is Open Sans and the monospace font face is Ubuntu Mono. The social icons are from the Ionicons font set. CSS classes for code syntax highlighting are inserted during compile-time by Hugo using Pygments.</description>
     </item>
     
     <item>
@@ -181,14 +113,7 @@ $ git diff @~2..@~3
       <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
       
       <guid>https://songmeixu.github.io/blog/code/</guid>
-      <description>
-
-&lt;p&gt;The Hitchhiker&amp;rsquo;s Guide to the Galaxy is a comedy science fiction series created by &lt;a href=&#34;https://en.wikipedia.org/wiki/Douglas_Adams&#34;&gt;Douglas Adams&lt;/a&gt;. Originally a radio comedy broadcast on BBC Radio 4 in 1978, it was later adapted to other formats, and over several years it gradually became an international multi-media phenomenon. Adaptations have included stage shows, a &amp;ldquo;trilogy&amp;rdquo; of five books published between 1979 and 1992, a sixth novel penned by &lt;a href=&#34;https://en.wikipedia.org/wiki/Eoin_Colfer&#34;&gt;Eoin Colfer&lt;/a&gt; in 2009, a 1981 TV series, a 1984 computer game, and three series of three-part comic book adaptations of the first three novels published by DC Comics between 1993 and 1996. There were also two series of towels, produced by Beer-Davies, that are considered by some fans to be an &amp;ldquo;official version&amp;rdquo; of The Hitchhiker&amp;rsquo;s Guide to the Galaxy, as they include text from the first novel.&lt;/p&gt;
-
-&lt;h3 id=&#34;movie&#34;&gt;Movie&lt;/h3&gt;
-
-&lt;p&gt;A Hollywood-funded film version, produced and filmed in the UK, was released in April 2005, and radio adaptations of the third, fourth, and fifth novels were broadcast from 2004 to 2005. Adams did many of these adaptations, including the novels, the TV series, the computer game, and the earliest drafts of the Hollywood film’s screenplay, and some of the stage shows introduced new material written by Adams.&lt;/p&gt;
-</description>
+      <description>The Hitchhiker&amp;rsquo;s Guide to the Galaxy is a comedy science fiction series created by Douglas Adams. Originally a radio comedy broadcast on BBC Radio 4 in 1978, it was later adapted to other formats, and over several years it gradually became an international multi-media phenomenon. Adaptations have included stage shows, a &amp;ldquo;trilogy&amp;rdquo; of five books published between 1979 and 1992, a sixth novel penned by Eoin Colfer in 2009, a 1981 TV series, a 1984 computer game, and three series of three-part comic book adaptations of the first three novels published by DC Comics between 1993 and 1996.</description>
     </item>
     
     <item>
@@ -197,15 +122,7 @@ $ git diff @~2..@~3
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://songmeixu.github.io/blog/about-this-site/</guid>
-      <description>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;link rel=&#34;canonical&#34; href=&#34;https://songmeixu.github.io/blog/colophon&#34;/&gt;
-    &lt;meta http-equiv=&#34;content-type&#34; content=&#34;text/html; charset=utf-8&#34;/&gt;
-    &lt;meta http-equiv=&#34;refresh&#34; content=&#34;0;url=/colophon&#34;/&gt;
-  &lt;/head&gt;
-&lt;/html&gt;
-</description>
+      <description>    </description>
     </item>
     
     <item>
@@ -214,15 +131,7 @@ $ git diff @~2..@~3
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://songmeixu.github.io/blog/posts/</guid>
-      <description>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;link rel=&#34;canonical&#34; href=&#34;https://songmeixu.github.io/blog/blog&#34;/&gt;
-    &lt;meta http-equiv=&#34;content-type&#34; content=&#34;text/html; charset=utf-8&#34;/&gt;
-    &lt;meta http-equiv=&#34;refresh&#34; content=&#34;0;url=/blog&#34;/&gt;
-  &lt;/head&gt;
-&lt;/html&gt;
-</description>
+      <description>    </description>
     </item>
     
     <item>
@@ -231,15 +140,7 @@ $ git diff @~2..@~3
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://songmeixu.github.io/blog/writing/</guid>
-      <description>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;link rel=&#34;canonical&#34; href=&#34;https://songmeixu.github.io/blog/posts&#34;/&gt;
-    &lt;meta http-equiv=&#34;content-type&#34; content=&#34;text/html; charset=utf-8&#34;/&gt;
-    &lt;meta http-equiv=&#34;refresh&#34; content=&#34;0;url=/posts&#34;/&gt;
-  &lt;/head&gt;
-&lt;/html&gt;
-</description>
+      <description>    </description>
     </item>
     
   </channel>

@@ -6,8 +6,22 @@
     <description>Recent content in Blog on meixu song</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 30 Sep 2016 18:36:29 +0800</lastBuildDate>
-    <atom:link href="https://songmeixu.github.io/blog/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 May 2018 18:12:08 +0800</lastBuildDate>
+    
+	<atom:link href="https://songmeixu.github.io/blog/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kaldi并行训练配置方式</title>
+      <link>https://songmeixu.github.io/blog/blog/kaldi%E5%B9%B6%E8%A1%8C%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Tue, 29 May 2018 18:12:08 +0800</pubDate>
+      
+      <guid>https://songmeixu.github.io/blog/blog/kaldi%E5%B9%B6%E8%A1%8C%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/</guid>
+      <description>前言：在训练中，常需要根据任务是CPU还是GPU运算密集任务、IO读写任务，将任务分配到不同的服务机群，SGE提供了队列来应对这一需求。具体在kaldi环境中，切换队列有以下方法：
+方法1 &amp;ndash; 直接修改cmd.sh： queue=all.q # 在这里指定队列 export train_cmd=&amp;quot;queue.pl -q $queue --mem 2G&amp;quot; export decode_cmd=&amp;quot;queue.pl -q $queue --mem 4G&amp;quot; export mkgraph_cmd=&amp;quot;queue.pl -q $queue --mem 8G&amp;quot;  方法2 &amp;ndash; 修改conf/queue.conf： kaldi解析SGE并行任务的脚本为queue.pl，其默认会读取配置文件conf/queue.conf，所以可以通过配置文件提供的选项来切换队列。（还可以完成限制内存占用、指定进程数、指定机器处理等等配置，如--mem 2G就是通过默认配置文件完成到qsub中-l mem_free=2G,ram_free=2G的转换）
+以如下配置文件举例：
+command qsub -v PATH -cwd -S /bin/bash -j y -l arch=*64* option mem=* -l mem_free=$0,ram_free=$0 option mem=0 # Do not add anything to qsub_opts option num_threads=* -pe smp $0 option num_threads=1 # Do not add anything to qsub_opts option max_jobs_run=* -tc $0 default gpu=0 option gpu=0 -q all.</description>
+    </item>
     
     <item>
       <title>your new post</title>
@@ -15,14 +29,8 @@
       <pubDate>Fri, 30 Sep 2016 18:36:29 +0800</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/your-new-post/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1&lt;/li&gt;
-&lt;li&gt;2&lt;/li&gt;
-&lt;li&gt;3&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>test
+ 1 2 3  </description>
     </item>
     
     <item>
@@ -31,16 +39,8 @@
       <pubDate>Fri, 30 Sep 2016 18:20:40 +0800</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/hello-world/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
-
-int main(int argc, char const *argv[]) {
-  printf(&amp;quot;Hello world!\n&amp;quot;);
-  return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>test
+#include &amp;lt;stdio.h&amp;gt; int main(int argc, char const *argv[]) { printf(&amp;quot;Hello world!\n&amp;quot;); return 0; }  </description>
     </item>
     
     <item>
@@ -49,21 +49,8 @@ int main(int argc, char const *argv[]) {
       <pubDate>Mon, 21 Dec 2015 04:05:25 -0600</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/les-mis%C3%A9rables-by-victor-hugo/</guid>
-      <description>
-
-&lt;p&gt;Although this detail has no connection whatever with the real substance of what we are about to relate, it will not be superfluous, if merely for the sake of exactness in all points, to mention here the various rumors and remarks which had been in circulation about him from the very moment when he arrived in the diocese.&lt;/p&gt;
-
-&lt;h3 id=&#34;bool&#34;&gt;Bool&lt;/h3&gt;
-
-&lt;p&gt;True or false, that which is said of men often occupies as important a place in their lives, and above all in their destinies, as that which they do. M. Myriel was the son of a councillor of the &lt;a href=&#34;https://en.wikipedia.org/wiki/Parliament_of_Aix-en-Provence&#34;&gt;Parliament of Aix&lt;/a&gt;; hence he belonged to the nobility of the bar. It was said that his father, destining him to be the heir of his own post, had married him at a very early age, eighteen or twenty, in accordance with a custom which is rather widely prevalent in parliamentary families. In spite of this marriage, however, it was said that Charles Myriel created a great deal of talk. He was well formed, though rather short in stature, elegant, graceful, intelligent; the whole of the first portion of his life had been devoted to the world and
-to gallantry.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;The halls are nothing but rooms, and it is with difficulty that the air can be changed in them.&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;This conversation took place in the gallery dining-room on the ground-floor. The &lt;a href=&#34;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#34;&gt;Bishop&lt;/a&gt; remained silent for a moment; then he turned abruptly to the director of the hospital.&lt;/p&gt;
-</description>
+      <description>Although this detail has no connection whatever with the real substance of what we are about to relate, it will not be superfluous, if merely for the sake of exactness in all points, to mention here the various rumors and remarks which had been in circulation about him from the very moment when he arrived in the diocese.
+Bool True or false, that which is said of men often occupies as important a place in their lives, and above all in their destinies, as that which they do.</description>
     </item>
     
     <item>
@@ -72,29 +59,9 @@ to gallantry.&lt;/p&gt;
       <pubDate>Mon, 21 Dec 2015 04:03:46 -0600</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/metamorphosis-by-franz-kafka/</guid>
-      <description>
-
-&lt;h3 id=&#34;part-one&#34;&gt;Part One&lt;/h3&gt;
-
-&lt;p&gt;One morning, when &lt;em&gt;Gregor Samsa&lt;/em&gt; woke from troubled dreams, he &lt;a href=&#34;./&#34;&gt;found&lt;/a&gt; himself transformed in his bed into a horrible vermin.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.&lt;/p&gt;
-
-&lt;h3 id=&#34;part-two&#34;&gt;Part Two&lt;/h3&gt;
-
-&lt;p&gt;It was not until it was getting dark that evening that Gregor awoke from his deep and coma-like sleep. He would have woken soon afterwards anyway even if he hadn&amp;rsquo;t been disturbed, as he had had enough sleep and felt fully rested. But he had the impression that some hurried steps and the sound of the door leading into the front room being carefully shut had woken him.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;He pushed himself over to the door, feeling his way clumsily with his antennae - of which he was now beginning to learn the value - in order to see what had been happening there.&lt;/li&gt;
-&lt;li&gt;The whole of his left side seemed like one, painfully stretched scar, and he limped badly on his two rows of legs.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The light from the &lt;a href=&#34;https://en.wikipedia.org/wiki/Street_light&#34;&gt;electric street lamps&lt;/a&gt; shone palely here and there onto the ceiling and tops of the furniture, but down below, where Gregor was, it was dark.&lt;/p&gt;
-</description>
+      <description>Part One One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.
+ He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.
+ The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.</description>
     </item>
     
     <item>
@@ -103,28 +70,10 @@ to gallantry.&lt;/p&gt;
       <pubDate>Tue, 25 Aug 2015 17:09:14 -0500</pubDate>
       
       <guid>https://songmeixu.github.io/blog/blog/use-at-instead-of-head/</guid>
-      <description>&lt;p&gt;I recently discovered that from git version &lt;a href=&#34;https://github.com/git/git/blob/master/Documentation/RelNotes/1.8.5.txt#L100&#34;&gt;1.8.5&lt;/a&gt; onwards, &lt;code&gt;@&lt;/code&gt; can replace &lt;code&gt;HEAD&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span&gt;&lt;/span&gt;$ git reset --hard @~2
-$ git rebase -i @~10
-$ git diff @~2..@~3
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;And also in most scenarios &lt;code&gt;HEAD&lt;/code&gt; can be left out completely, so you can say:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span&gt;&lt;/span&gt;$ git reset -- @&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;2&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;instead of:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span&gt;&lt;/span&gt;$ git reset -- HEAD@&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;2&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;It takes some getting used to, but it&amp;rsquo;s definitely faster than typing &lt;code&gt;HEAD&lt;/code&gt;.&lt;/p&gt;
-</description>
+      <description>I recently discovered that from git version 1.8.5 onwards, @ can replace HEAD:
+$ git reset --hard @~2 $ git rebase -i @~10 $ git diff @~2..@~3 And also in most scenarios HEAD can be left out completely, so you can say:
+$ git reset -- @{2} instead of:
+$ git reset -- HEAD@{2} It takes some getting used to, but it&amp;rsquo;s definitely faster than typing HEAD.</description>
     </item>
     
   </channel>
