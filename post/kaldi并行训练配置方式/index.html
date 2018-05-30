@@ -88,25 +88,32 @@ export mkgraph_cmd=&quot;queue.pl -q $queue --mem 8G&quot;
 
 <pre><code class="language-bash">command qsub -v PATH -cwd -S /bin/bash -j y -l arch=*64*
 option mem=* -l mem_free=$0,ram_free=$0
-option mem=0 # Do not add anything to qsub_opts
+option mem=0          # Do not add anything to qsub_opts
 option num_threads=* -pe smp $0
-option num_threads=1 # Do not add anything to qsub_opts
+option num_threads=1  # Do not add anything to qsub_opts
 option max_jobs_run=* -tc $0
 default gpu=0
-option gpu=0 -q all.q
-option gpu=* -l gpu=1 -q $0.q # --gpu=(QueuePrefixName:m40,p40)
+option gpu=0
+option gpu=* -l gpu=$0
+# single job use how many gpu (usually: 1)
+# 'gpu=?' can be ignore in kaldi nnet3 training,
+# as '--gpu 1' will be set in kaldi nnet3 train lib scripts, if &quot;use_gpu=true&quot;.
+default queue=all.q
+option queue=all.q -q all.q
+option queue=* -q $0  
+option queue=p40.q -q p40.q -l hostname='!*abc*&amp;!*def*'
 </code></pre>
 
 <p>此配置文件各关键词的意义可见于<a href="http://kaldi-asr.org/doc/queue.html">&ldquo;New-style options (unified interface)&rdquo;</a></p>
 
 <p>然后就可以在cmd.sh中通过如下方法切换队列：</p>
 
-<pre><code class="language-bash">gpu=0 # 使用all.q
-gpu=p40 # 使用p40.q
-
-export train_cmd=&quot;queue.pl --gpu $gpu --mem 2G&quot;
-export decode_cmd=&quot;queue.pl --gpu $gpu --mem 4G&quot;
-export mkgraph_cmd=&quot;queue.pl --gpu $gpu --mem 8G&quot;
+<pre><code class="language-bash">gpu=1 # 使用gpu
+queue=m40.q  # set m40 queue
+ 
+export train_cmd=&quot;queue.pl --queue $queue --gpu $gpu&quot;
+export decode_cmd=&quot;queue.pl --queue $queue --gpu $gpu&quot;
+export mkgraph_cmd=&quot;queue.pl --queue $queue --gpu $gpu&quot;
 </code></pre>
 
 <p>方法2虽然多了一道配置，但是增加了配置能力（见下例），提供了统一的接口，方便不同机群调度管理工具（SGE、slurm等）的切换。</p>
