@@ -120,7 +120,7 @@ export mkgraph_cmd=&quot;queue.pl --gpu $gpu --mem 8G&quot;
 <p><strong>注意</strong>：
 方法二有个问题，就是配置的优先级，如果我在cmd.sh和queue.conf中都配置了，那么以哪个为准呢？</p>
 
-<p>通过查看queue.pl，发现在cmd.sh中通过qsub配置的原生参数，总会添加到最终的配置中，而在queue.conf中优先生效不需正则匹配的option、然后是正则替换后的option。当cmd.sh和queue.conf冲突时，如分别指定了&rsquo;-q all.q&rsquo;与&rsquo;-q p40.q&rsquo;，二者共存时、qsub优先使用先读取的cmd.sh中的参数。</p>
+<p>通过查看queue.pl，发现在cmd.sh中通过qsub配置的原生参数，总会添加到最终的配置中，而在queue.conf中优先生效不需正则匹配的option、然后是正则替换后的option。当cmd.sh和queue.conf冲突时，如分别指定了&rsquo;-q all.q&rsquo;与&rsquo;-q p40.q&rsquo;，二者或更多队列（&rsquo;-q all.q,g.q,c.q&rsquo;）共存时，qsub依赖SGE scheduler机制、依据机群状态自动分配任务，所以想要指定使用机器、队列或其他资源，请使用必须满足的&rsquo;-l&rsquo;选项来配置：<code>-l [hostname|qname..]=*</code>，可指定的资源可见于<a href="http://gridscheduler.sourceforge.net/htmlman/htmlman5/complex.html?pathrev=V62u5_TAG">complex</a>。</p>
 
       
       
